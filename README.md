@@ -1,6 +1,7 @@
-# Grokking Java Interview :coffee:
+# Grokking Java Interview (or self-marketing in action) :coffee:
 
-## Core Java :thinking:
+
+## Core Java :thinking: 
 
 #### What is OOP?
 OOP is a metodology of programming that describes the program as set of objects
@@ -90,6 +91,7 @@ Nested classes are divided into two categories:
 
 #### What is JVM?
 JVM stands for Java Virtual Machine. This virtual machine compalies the java code to the bytecode that can be executed.
+![alt text](https://media.geeksforgeeks.org/wp-content/uploads/jvm-3.jpg)
 
 #### What is JIT?
 JIT stands for Just in Time and is the JVM's mechanism to optimize code at runtime. 
@@ -164,11 +166,44 @@ The heap is the memory set aside for dynamic allocation. Unlike the stack, there
 ![alt text](https://sematext.com/wp-content/uploads/2021/09/java-exceptions-1.png)
 
 #### What is Stream API?
+Stream API is an way that makes work with data structures easier in functional style.
+Stream API allows you to write structure processing in followig way.
+
+Non Stream API:
+```
+        Integer sumOddOld = 0; 
+        for(Integer i: collection) {
+            if(i % 2 != 0) {
+                sumOddOld += i;
+            }
+        }
+```
+
+Stream API:
+```
+       Integer sumOdd = collection.stream().filter(o -> o % 2 != 0).reduce((s1,s2 -> s1 + s2).orElse(0);
+```
+ 
+#### Terminal and Intermediate operations
+- Terminal - returns another object such as collections, primitives, objects, Optiona etc.
+- Intermediate - returns another stream working as a builder
+
+General Rule:
+There can be a lot <b>Intermediate</b> operations in the middle but just one <b>Terminal</b> operation in the end
+Intermediate operations are executed in a lazy way so till terminal operation is not executed there will be no actions. 
 
 #### What is Maven?
+Maven is a software for automatiion build based on structure files called POM (Project Object Model)
 
 #### Maven lifecycle
-
+- validate - validate the project is correct and all necessary information is available
+- compile - compile the source code of the project
+- test - test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed
+- package - take the compiled code and package it in its distributable format, such as a JAR.
+- verify - run any checks on results of integration tests to ensure quality criteria are met
+- install - install the package into the local repository, for use as a dependency in other projects locally
+- deploy - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.
+  
 #### Processes vs Threads
 An application consists of one or more processes. A process in an executing program. One or more threads run in the context of the process. A thread is the basic unit to which the operating system allocates processor time. A thread can execute any part of the process code, including parts currently being executed by another thread (shared memory)
 
@@ -176,13 +211,41 @@ An application consists of one or more processes. A process in an executing prog
 A job object allows groups of processes to be managed as a unit. Job objects are namable, securablem sharable objects that contro attributes of the processes associated with them. Operations performed on the job object affect all processes associated with the job object
 </i>  
 
-#### Lambdas vs Regular functions
+#### Synchronized keyword
+Synchronized keyword is applied to method/attribute to prevent `race condition` between two threads that use shared resource. 
 
-#### Semaphores and mutexes 
+#### Runnable vs Callable
+Callable interface and Runnable interface are used to encapsulate tasks supposed to be executed by another thread.
+
+However, Runnable instances can be run by Thread class as well as ExecutorService but Callable instances can only be executed via ExecutorService.
+
+<i>Callable Interface</i>
+
+In a callable interface that basically throws a checked exception and returns some results.
+```
+    public interface Callable<V> 
+    {
+        V call() throws exception ;
+    }
+```
+1. It is declared in the 'java.util.concurrent' package
+2. This interface also contains a single, no-argument as a parameter.
+3. We can't create a thread by passing callable as a parameter.
+4. Callable can return results. Callable's `call()` method contains the "throw Exception" clause, so we can easily propagate checked exceptions further.
+   
+<i>Runnable interface</i>
+
+When an object implementing this interface is used to create a thread, staring the thread causes the object run method to be called in a separately executing thread.
+```
+    public interface Runnable 
+    {
+        public abstract void run();
+    }
+```
 
 #### StringBuilder vs SpringBuffer
 
-#### Runnable vs Callable
+
 
 #### App server vs Web server
 
@@ -214,6 +277,7 @@ A job object allows groups of processes to be managed as a unit. Job objects are
 
 #### What is Spring Data
 
+## Git
 
 ## Databases
 
@@ -263,5 +327,9 @@ A job object allows groups of processes to be managed as a unit. Job objects are
 #### Quick sort
 #### Merge sort
 
-## Clean Code Thingies
 
+## Unix 
+
+#### Semaphores and mutexes 
+
+## Clean Code Thingies
