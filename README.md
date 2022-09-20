@@ -298,6 +298,9 @@ Application Server Examples: Weblogic, JBoss, Websphere.
 
 
 ## Networks
+#### HTTP request methods
+#### GET vs POST 
+
 
 ## Algorithms and Data Structures
 
