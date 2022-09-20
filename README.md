@@ -259,6 +259,10 @@ Application encompasses Web container as well as EJB container. Application serv
 Application Server Examples: Weblogic, JBoss, Websphere.
 
 #### Java 8 Thingies
+- lambdas and Functional Interfaces
+- streams
+- optional class
+- default method realisation in interface;
 
 ## Spring Core
 
