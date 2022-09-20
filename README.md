@@ -243,11 +243,20 @@ When an object implementing this interface is used to create a thread, staring t
     }
 ```
 
-#### StringBuilder vs SpringBuffer
-
-
+#### String vs StringBuilder vs SpringBuffer
+- String is immutable whereas StringBuufer and StringBuilder are mutable classes.
+- StringBuffer is thread-safe and synchonized whereas StringBuilder is not, that is why StringBuilder is faster than StringBuffer.
+- String concatenation operator (+) internally uses StringBuffer or StringBuilder class.
+- For String manipulations in a non-multi threaded environment, we should use StringBuilder else use StringBuffer class
+- When we create a string using double quotes, JVM first looks for the String with the same value in the string pool. If found, it returns the reference of the string object from the pool. Otherwise, it creates the String object in the String pool and returns the reference. JVM saves a lot of memoty by using the same String in defferent threads.
+  
 
 #### App server vs Web server
+Web Server is a computer program that accepts the request for data and seds the specified documents. Wev server may be a computer where the online concept is kept. Essentially internet server is employed to host sites however there exist different web servers conjointly like recreation, storage, FTP, email, etc.
+Web Servers: Apache HTTP Server, Nginx
+
+Application encompasses Web container as well as EJB container. Application servers organize the run atmosphere for enterprises applications. 
+Application Server Examples: Weblogic, JBoss, Websphere.
 
 #### Java 8 Thingies
 
