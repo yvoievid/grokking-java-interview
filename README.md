@@ -3,8 +3,10 @@
 
 ## Core Java :thinking: 
 
-#### What is OOP?
-OOP is a metodology of programming that describes the program as set of objects
+<details>
+    <summary style="font-size:18px">What is OOP?</summary>
+        OOP is a metodology of programming that describes the program as set of objects
+</details>
 
 #### What are OOP paradigms?
 There are four OOP paradigms 
@@ -252,7 +254,7 @@ When an object implementing this interface is used to create a thread, staring t
   
 
 #### App server vs Web server
-Web Server is a computer program that accepts the request for data and seds the specified documents. Wev server may be a computer where the online concept is kept. Essentially internet server is employed to host sites however there exist different web servers conjointly like recreation, storage, FTP, email, etc.
+Web Server is a computer program that accepts the request for data and seds the specified documents. Web server may be a computer where the online concept is kept. Essentially internet server is employed to host sites however there exist different web servers conjointly like recreation, storage, FTP, email, etc.
 Web Servers: Apache HTTP Server, Nginx
 
 Application encompasses Web container as well as EJB container. Application servers organize the run atmosphere for enterprises applications. 
@@ -267,10 +269,15 @@ Application Server Examples: Weblogic, JBoss, Websphere.
 ## Spring Core
 
 #### What is Dependency Injection
+Dependency Injection is a mechanism of passing dependency to other object or framework. The injection can be done through constructor. 
 
 #### What is Invertion of Control
 
 #### What are Spring beans
+
+#### Spring Security
+
+#### Spring 
 
 #### What are benefits of using Spring?
 
@@ -292,18 +299,37 @@ Application Server Examples: Weblogic, JBoss, Websphere.
 
 ## Git
 
-## Databases
+#### basic commands (commit, checkout, push, pull, merge, rebase)
 
+## Databases
 
 #### Entity
 #### Indexes
 #### Clustered vs Non-Cludstered Indexes
 #### Relations (One to One, Many to Many, One to Many)
-
+#### Index fragmagtation
+#### What is 2nd normal form
+#### What is 3rd normal form
+#### What is Boise-Code normal form
+#### Trigger
+#### Group By / Order by
+#### Joins (outer, inner, left, right)
+#### ACID 
+ACID is an collection of rules that guarantees good work of transaction
+- Atomarity - trasaction executes from start to end or don't executes at all
+- Consistency - the system have to be in consistent state before and after transaction
+- Isolation - the changes that are made withing transaction will not be vissible till transaction ends
+- Durability - despite of probles of the system the results of commited transactions will be saved
+  
+#### Isolation Levels
+- 
 
 ## Networks
 #### HTTP request methods
 #### GET vs POST 
+#### TCP/IP 
+#### DNS server
+#### DHCP server
 
 
 ## Algorithms and Data Structures
