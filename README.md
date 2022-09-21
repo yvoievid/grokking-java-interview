@@ -272,12 +272,13 @@ Application Server Examples: Weblogic, JBoss, Websphere.
 Dependency Injection is a mechanism of passing dependency to other object or framework. The injection can be done through constructor. 
 
 #### What is Invertion of Control
+Inversion of Control is a pattern, that provides king of callback, instead of ourself directly, in other work passing the dependency with constructor
 
 #### What are Spring beans
+In Spring, the objects that form the backbone of your application and that are managed by the Spring IoC container are called beans. A bean is an object that is instantiated, assembled, and otherwise managed by a Spring IoC container.
 
 #### Spring Security
-
-#### Spring 
+Spring Security is a framework that focuses on providing both authentication and authorization to Java applications. Like all Spring projects, the real power of Spring Security is found in how easily it can be extended to meet custom requirements.
 
 #### What are benefits of using Spring?
 
@@ -296,10 +297,17 @@ Dependency Injection is a mechanism of passing dependency to other object or fra
 - Exception handling. Spring’s application programming interface (API) translates technology-specific exceptions into consistent, unchecked exceptions.
 
 #### What is Spring Data
+Spring Data is a projects that covers multiple technologies for accessing DB data using Spring Framework. It includes such things as Spring JPA and Spring JDBC
 
 ## Git
 
 #### basic commands (commit, checkout, push, pull, merge, rebase)
+- git commit - creates a copy of your source code but containing only difference that you made.
+- git checkout - allows you to switch between branches that were created by `git brach`
+- git push - uploads local commited changes to the remote branch
+- git pull - uploads remote changes to the local repo
+- git rebase - reapply commits on another base tip
+- git merge - aggregates two different commits into one commit history
 
 ## Databases
 
@@ -322,7 +330,10 @@ ACID is an collection of rules that guarantees good work of transaction
 - Durability - despite of probles of the system the results of commited transactions will be saved
   
 #### Isolation Levels
-- 
+- Read Uncommited
+- Read Commited
+- Repeatable Read
+- Serializable
 
 ## Networks
 #### HTTP request methods
