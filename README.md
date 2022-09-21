@@ -24,6 +24,12 @@ There are four OOP paradigms
 #### What is a class?
 Class - the construction of OOP that represent an real life object blueprint. It consists of variables and methods (also called characteristics and behavoiour).
 
+#### What is constructor?
+#### What is `this` keyword?
+#### What is `final` keyword?
+#### What is `super` keyword?
+
+
 #### Data types in Java?
 ![alt text](https://media.geeksforgeeks.org/wp-content/cdn-uploads/20191105111644/Data-types-in-Java.jpg)
 
@@ -41,6 +47,9 @@ interface Player
     int move();
 }
 ```
+
+#### What is functional interface?
+
 
 #### What is abstract class?
 Abstract class is a class from which you can't create an instance. Abstract class defined by `abstract` keyword. It can have have both abstract and non-abstract methods(methods with bodies). An abstract modifier can be applied for classes and methods but not for variables.
@@ -167,6 +176,21 @@ The heap is the memory set aside for dynamic allocation. Unlike the stack, there
 #### Exception hierarchy
 ![alt text](https://sematext.com/wp-content/uploads/2021/09/java-exceptions-1.png)
 
+#### Exception Handling
+ - Exceptions (can be handled)
+   - Checked (Compile Time)
+     - Compiler can check this exceptions
+     - File not found exception
+     - Array IndexOutOfBound Exception
+   - Unchecked (Runtime)
+     - Compiler can't check this exception
+     - Ariphmetic exceptions
+     - Divide by 0
+     - Null pointer exception
+ - Errors (cannot be handled)
+  - Out of memory error
+  - Virtual machine error
+
 #### What is Stream API?
 Stream API is an way that makes work with data structures easier in functional style.
 Stream API allows you to write structure processing in followig way.
@@ -261,10 +285,12 @@ Application encompasses Web container as well as EJB container. Application serv
 Application Server Examples: Weblogic, JBoss, Websphere.
 
 #### Java 8 Thingies
-- lambdas and Functional Interfaces
+- lambdas 
+- functional Interfaces
 - streams
 - optional class
 - default method realisation in interface;
+- collectors class 
 
 ## Spring Core
 
@@ -303,7 +329,7 @@ Spring Data is a projects that covers multiple technologies for accessing DB dat
 
 #### basic commands (commit, checkout, push, pull, merge, rebase)
 - git commit - creates a copy of your source code but containing only difference that you made.
-- git checkout - allows you to switch between branches that were created by `git brach`
+- git checkout - allows you to switch between branches that were created by `git branch` 
 - git push - uploads local commited changes to the remote branch
 - git pull - uploads remote changes to the local repo
 - git rebase - reapply commits on another base tip
@@ -311,7 +337,8 @@ Spring Data is a projects that covers multiple technologies for accessing DB dat
 
 ## Databases
 
-#### Entity
+#### What are subsets of SQL?
+
 #### Indexes
 #### Clustered vs Non-Cludstered Indexes
 #### Relations (One to One, Many to Many, One to Many)
@@ -341,7 +368,6 @@ ACID is an collection of rules that guarantees good work of transaction
 #### TCP/IP 
 #### DNS server
 #### DHCP server
-
 
 ## Algorithms and Data Structures
 
@@ -386,3 +412,18 @@ ACID is an collection of rules that guarantees good work of transaction
 #### Semaphores and mutexes 
 
 ## Clean Code Thingies
+
+### What is TDD?
+### Define SOLID principles
+### Define DRY principles
+
+
+## Code Thingies
+
+### How many objects will be created?
+String s1="Pune" ;
+String s2="Mumbai" ;
+String s3="Pune" ;
+String s4=new String("Mumbai");
+
+answer: 3, because of String Pool
