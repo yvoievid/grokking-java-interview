@@ -269,6 +269,29 @@ When an object implementing this interface is used to create a thread, staring t
     }
 ```
 
+#### Concurrent Map
+ConcurrentMap is an extension of the Map interface. It aims to provides a structure and guidance to solving the problem of reconciling throughput with thread-safety.
+
+By overriding several interface default methods, ConcurrentMap gives guidelines for valid implementations to provide thread-safety and memory-consistent atomic operations.
+
+Several default implementations are overridden, disabling the null key/value support:
+
+getOrDefault
+forEach
+replaceAll
+computeIfAbsent
+computeIfPresent
+compute
+merge
+The following APIs are also overridden to support atomicity, without a default interface implementation:
+
+putIfAbsent
+remove
+replace(key, oldValue, newValue)
+replace(key, value)
+The rest of actions are directly inherited with basically consistent with Map.
+
+
 #### String vs StringBuilder vs SpringBuffer
 - String is immutable whereas StringBuufer and StringBuilder are mutable classes.
 - StringBuffer is thread-safe and synchonized whereas StringBuilder is not, that is why StringBuilder is faster than StringBuffer.
@@ -335,12 +358,43 @@ Spring Data is a projects that covers multiple technologies for accessing DB dat
 - git rebase - reapply commits on another base tip
 - git merge - aggregates two different commits into one commit history
 
+ - difference between merge and rebase
+
 ## Databases
 
 #### What are subsets of SQL?
+- Data Definition Language (DDL)
+  DDL queries are made up of SQL commands that can be used to define the structure of database and modify it
+  - CREATE
+  - DROP
+  - DROP COLUMN
+  - ALTER
+  - TRUNCATE:  Removes tables, views, procedures, and other database objects
+  - ADD COLUMN
+- Data Manipulate Language (DML)
+  - SELECT
+  - INSERT 
+  - UPDATE
+  - DELETE: Deletes records from the table 
+
+#### UNION vs UNION ALL
+The UNION is equal to UNION ALL, except that UNION ALL will not eliminate duplicate rows
 
 #### Indexes
+An index is performance tuning method of allowing faster retrieval of records from the table. An index creates an entry for each value and it will be faster to retrieve data.
+
 #### Clustered vs Non-Cludstered Indexes
+There are three types of indexes:
+
+`Unique Index`
+This indexing does not allow the field to have duplicate values if the column is unique indexed. Unique index can be applied automatically when primary key is defined.
+
+`Clustered Index`
+This type of index reorders the physical order of the table and search based on the key values. Each table can have only one clustered index.
+
+`NonClustered Index`
+NonClustered Index does not alter the physical order of the table and maintains logical order of data. Each table can have 999 nonclustered indexes.
+
 #### Relations (One to One, Many to Many, One to Many)
 #### Index fragmagtation
 #### What is 2nd normal form
@@ -349,6 +403,7 @@ Spring Data is a projects that covers multiple technologies for accessing DB dat
 #### Trigger
 #### Group By / Order by
 #### Joins (outer, inner, left, right)
+
 #### ACID 
 ACID is an collection of rules that guarantees good work of transaction
 - Atomarity - trasaction executes from start to end or don't executes at all
@@ -364,10 +419,49 @@ ACID is an collection of rules that guarantees good work of transaction
 
 ## Networks
 #### HTTP request methods
+ - GET 
+ - POST 
+ - PUT
+ - DELETE
+ - HEAD
+ - DELETE
+ - PATCH
+ - OPTIONS
+ - CONNECT
+ - TRACE
+  
 #### GET vs POST 
+- GET request can be cached
+- GET request remain in browser history
+- GET request can be bookmarked
+- GET request should never be used when dealing with sensitive data
+- GET requests have length restrictions
+- GET requests are used only to modify data
+  
+- POST requests are never cached 
+- POST requests DO NOT remain in browser history
+- POST request can not be bookmarked
+- POST requests have no restrictions on data length
+
+
 #### TCP/IP 
+
+
 #### DNS server
+
+
 #### DHCP server
+
+
+#### Error codes
+
+1xx informational response – the request was received, continuing process
+2xx successful – the request was successfully received, understood, and accepted
+3xx redirection – further action needs to be taken in order to complete the request
+4xx client error – the request contains bad syntax or cannot be fulfilled
+5xx server error – the server failed to fulfil an apparently valid request
+
+
 
 ## Algorithms and Data Structures
 
@@ -388,7 +482,6 @@ ACID is an collection of rules that guarantees good work of transaction
 ### Tree
 #### Red-Black tree
 #### Binary tree
-#### 
 
 
 ### Array 
@@ -399,7 +492,6 @@ ACID is an collection of rules that guarantees good work of transaction
 #### Binary search
 #### Wide first search
 #### Breadth first search
-#### 
 
 ### Sorting 
 #### Bubble sort
@@ -409,21 +501,103 @@ ACID is an collection of rules that guarantees good work of transaction
 
 ## Unix 
 
+#### Difference between sudo and root
+root - user, sudo - command to 
+
 #### Semaphores and mutexes 
 
 ## Clean Code Thingies
 
 ### What is TDD?
 ### Define SOLID principles
+ SOLID is a mnemonic acronym for five design principles intended to make object-oriented designs more understandable, flexible, and maintainable. 
+
+ - S - Single responsibility prinsiple
+ - O - Open closed principle
+ - L - Liskov substitution principle
+ - I - Interface segregation principle
+ - D - Dependency inversion principle
+
 ### Define DRY principles
 
+## Docker Thingies
+
+#### What is container?
+#### What is image?
+
+## RegExps
 
 ## Code Thingies
 
 ### How many objects will be created?
-String s1="Pune" ;
-String s2="Mumbai" ;
-String s3="Pune" ;
-String s4=new String("Mumbai");
+String s1="Lviv" ;
+String s2="Kyiv" ;
+String s3="Lviv" ;
+String s4=new String("Kyiv");
 
 answer: 3, because of String Pool
+
+
+healthcare 
+microservices занадто сильно роздробили
+transaction management
+rest api
+compensational transaction
+spring streams
+saga
+POC, RabbitMQ
+MQTT brokers 
+
+is java crossplatform vs multiplatform 
+Is Java pure OOP language: static not object
+Problems of perfect infrastructure (with perfect patterns)
+big O
+microprocessor
+
+Service vs Component
+
+holywar: Autowired on fields 
+
+Where suitable to make beans with constructors
+
+What are good points with spring boot (dependensies)
+
+NoSQL vs SQL databases
+
+CAP theorem
+
+MISK vs RISK
+
+Maturity levels of REST
+
+Usage of OPTION 
+
+What happend when u type url on browser
+
+What is better than HTTP -> websocket?
+
+JRPC
+
+What is wrong with HTTP -> TTL?
+
+Reactive, Reactor Native, WebFlux
+
+What is saga, 
+
+what was before microservice
+
+What are problems of microservices 
+
+circuit breaker in microserver
+
+Contracts
+
+DDD 
+
+What is DevOps
+
+Mock vs Stab
+
+TDD
+
+Spring Contracts
