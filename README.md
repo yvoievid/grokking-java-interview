@@ -315,6 +315,37 @@ Application Server Examples: Weblogic, JBoss, Websphere.
 - default method realisation in interface;
 - collectors class 
 
+#### What is Generics and what they for
+Let's immagine tha situation when you need to create a List in Java and store a value
+```
+List list = new LinkedList();
+list.add(new Integer(1)); 
+Integer i = list.iterator().next();
+```
+
+On the last line compiler will argue because the type of retrieving value should be specified
+The compiler will ask for explisit casting
+
+```
+Integer i = (Integer) list.iterator().next();
+```
+
+There is no contract that will guarantee that return type will be an integer.
+The defined list could hold any object 
+We can impove this using dimond `<>` operator when we define a list
+
+```
+List<Integer> list = new LinkedList();
+```
+
+Now we specified type inside the list. The compiler can enforce type at compile time
+
+In small programs it may seem like a trivial addition, but in large ones it can add sugnifficant robustness and make easier to read
+
+Generic Methods
+
+
+
 ## Spring Core
 
 #### What is Dependency Injection
@@ -552,7 +583,18 @@ is java crossplatform vs multiplatform
 Is Java pure OOP language: static not object
 Problems of perfect infrastructure (with perfect patterns)
 big O
+hardly readable
+a lot of memory usage
+time of execution
+
 microprocessor
+
+Generics 
+Type check to compile time 
+
+List<?> 
+producer super producer extend
+? - for backport compatability
 
 Service vs Component
 
@@ -601,3 +643,7 @@ Mock vs Stab
 TDD
 
 Spring Contracts
+
+REST maturity levels
+
+scrum artefacts
