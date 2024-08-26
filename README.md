@@ -12,7 +12,7 @@
 There are four OOP paradigms 
 - encapsulation
 - polymorphism
-- inharitance
+- inheritance
 - abstraction
 
 #### Define what the encapsulation is, also tell about polymorphism, inharitance and abstraction
@@ -23,6 +23,7 @@ There are four OOP paradigms
 
 #### What is a class?
 Class - the construction of OOP that represent an real life object blueprint. It consists of variables and methods (also called characteristics and behavoiour).
+
 
 #### What is constructor?
 #### What is `this` keyword?
@@ -167,6 +168,48 @@ The heap is the memory set aside for dynamic allocation. Unlike the stack, there
 ![alt text](https://www.baeldung.com/wp-content/uploads/2018/07/java-heap-stack-diagram.png)
 
 
+In Java, memory management is divided into two main areas: the heap and the stack. These two memory areas are used for different purposes and have distinct characteristics.
+
+1. Heap
+Definition: The heap is a portion of memory used for dynamic memory allocation. All objects and their instance variables are stored in the heap.
+Lifetime: Objects in the heap have a longer lifespan and exist as long as they are referenced. When they are no longer referenced, they become eligible for garbage collection.
+Access: Objects in the heap are accessed via references stored in the stack. Memory allocation and deallocation for the heap are managed automatically by the garbage collector.
+Size: The heap is typically larger than the stack and can grow as needed, limited by the maximum heap size set by the JVM.
+Usage:
+Objects and instance variables.
+Shared across all threads.
+2. Stack
+Definition: The stack is a region of memory that stores method call frames, including local variables, method parameters, and the return address.
+Lifetime: Variables in the stack exist only for the duration of the method call. Once the method execution is completed, the corresponding stack frame is removed, and the memory is reclaimed.
+Access: The stack follows a Last-In-First-Out (LIFO) order. Each thread in Java has its own stack, making it thread-safe without requiring synchronization.
+Size: The stack size is generally smaller than the heap. Its size is fixed when the thread is created, and if the stack memory limit is exceeded, a StackOverflowError is thrown.
+Usage:
+Primitive data types and references to objects.
+Method call information, including parameters, local variables, and return addresses.
+Key Differences
+Memory Location:
+
+Heap: Dynamic memory (shared among threads).
+Stack: Static memory (private to each thread).
+Lifetime:
+
+Heap: Objects persist as long as they are referenced.
+Stack: Variables persist only within the method call.
+Speed:
+
+Heap: Slower access due to dynamic memory allocation and garbage collection.
+Stack: Faster access due to its LIFO nature.
+Garbage Collection:
+
+Heap: Managed by the garbage collector.
+Stack: Managed automatically when the method call ends.
+Thread Safety:
+
+Heap: Requires synchronization for thread safety.
+Stack: Thread-safe as each thread has its own stack.
+
+
+
 #### What is Java Collection Framework?
 > JCF - collection of linked classes and interfaces that implements commonly reusable data structures.
 
@@ -176,20 +219,32 @@ The heap is the memory set aside for dynamic allocation. Unlike the stack, there
 #### Exception hierarchy
 ![alt text](https://sematext.com/wp-content/uploads/2021/09/java-exceptions-1.png)
 
+
 #### Exception Handling
- - Exceptions (can be handled)
-   - Checked (Compile Time)
-     - Compiler can check this exceptions
-     - File not found exception
-     - Array IndexOutOfBound Exception
-   - Unchecked (Runtime)
-     - Compiler can't check this exception
-     - Ariphmetic exceptions
-     - Divide by 0
-     - Null pointer exception
- - Errors (cannot be handled)
-  - Out of memory error
-  - Virtual machine error
+1. Checked Exceptions Definition: Checked exceptions are exceptions that are checked at compile-time. The compiler ensures that these exceptions are either caught or declared in the method's throws clause.
+   Examples:
+   IOException
+   SQLException
+   FileNotFoundException
+   Handling: They must be either caught using a try-catch block or declared in the throws clause of the method.
+2. Unchecked Exceptions
+   Definition: Unchecked exceptions, also known as runtime exceptions, are not checked at compile-time. These exceptions occur during the execution of the program.
+   Examples:
+   NullPointerException
+   ArrayIndexOutOfBoundsException
+   ArithmeticException
+   Handling: Unlike checked exceptions, unchecked exceptions do not need to be explicitly handled or declared in the throws clause.
+3. Errors
+   Definition: Errors are not exceptions but issues that occur in the JVM, typically beyond the control of the application. These are usually serious problems that applications are not expected to catch.
+   Examples:
+   OutOfMemoryError
+   StackOverflowError
+   VirtualMachineError
+   Handling: Errors generally indicate serious issues and are not meant to be caught by application code. They are usually unrecoverable.
+
+#### CAP theorem
+![alt text](https://miro.medium.com/v2/resize:fit:1400/0*Qfb1P6Pkm2-dY1UB.png)
+
 
 #### What is Stream API?
 Stream API is an way that makes work with data structures easier in functional style.
@@ -526,6 +581,7 @@ ACID is an collection of rules that guarantees good work of transaction
 
 ### Sorting 
 #### Bubble sort
+
 #### Quick sort
 #### Merge sort
 
