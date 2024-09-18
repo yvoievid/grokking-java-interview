@@ -242,6 +242,9 @@ Stack: Thread-safe as each thread has its own stack.
    VirtualMachineError
    Handling: Errors generally indicate serious issues and are not meant to be caught by application code. They are usually unrecoverable.
 
+- If return is in catch block, but we have final -> final will be executed but it will not affect return statement
+
+
 #### CAP theorem
 ![alt text](https://miro.medium.com/v2/resize:fit:1400/0*Qfb1P6Pkm2-dY1UB.png)
 
@@ -362,13 +365,56 @@ Web Servers: Apache HTTP Server, Nginx
 Application encompasses Web container as well as EJB container. Application servers organize the run atmosphere for enterprises applications. 
 Application Server Examples: Weblogic, JBoss, Websphere.
 
-#### Java 8 Thingies
+## Java 8 Thingies
 - lambdas 
 - functional Interfaces
 - streams
 - optional class
 - default method realisation in interface;
 - collectors class 
+- optional
+
+#### Optional
+Optional is a container object introduced in Java 8 within the java.util package. It is used to represent the presence or absence of a value. Instead of returning null, methods can return an Optional object, which may or may not contain a non-null value.
+
+ The use of null references in Java causes both theoretical and
+practical problems:
+• It’s a source of error. NullPointerException is by far the
+most common exception in Java.
+• It bloats your code. It worsens readability by making it
+necessary to fill your code with null checks that are often
+deeply nested.
+• It’s meaningless. It doesn’t have any semantic meaning,
+and in particular, it represents the wrong way to model the
+absence of a value in a statically typed language.
+• It breaks Java philosophy. Java always hides pointers from
+developers except in one case: the null pointer.
+• It creates a hole in the type system. null carries no type or
+other information, so it can be assigned to any reference
+type. This situation is a problem because when null is
+propagated to another part of the system, you have no
+idea what that null was initially supposed to be.
+
+## GoF 
+
+- Creational
+- Behabioral
+- Architectural
+
+#### Creational patterns
+
+- Abstract factory pattern, which provides an interface for creating related or dependent objects without specifying the
+objects' concrete classes.
+
+- Builder pattern, which separates the construction of a complex object from its representation so that the same
+construction process can create different representations.
+
+- Factory method pattern, which allows a class to defer instantiation to subclasses.
+
+- Prototype pattern, which specifies the kind of object to create using a prototypical instance, and creates new objects by
+cloning this prototype.
+
+- Singleton pattern, which ensures that a class only has one instance, and provides a global point of access to it.
 
 #### What is Generics and what they for
 Let's immagine tha situation when you need to create a List in Java and store a value
@@ -433,6 +479,88 @@ Spring Security is a framework that focuses on providing both authentication and
 
 #### What is Spring Data
 Spring Data is a projects that covers multiple technologies for accessing DB data using Spring Framework. It includes such things as Spring JPA and Spring JDBC
+
+#### What is Serialization
+Serialization in Java is the process of converting an object into a byte stream, which allows the object to be easily saved to a file, transferred over a network, or stored in a database. This byte stream can later be "deserialized" to recreate the object in memory.
+
+Key Points:
+Purpose of Serialization:
+
+Persistence: Saving the state of an object to a file or database.
+Communication: Sending objects over a network, for example, in distributed systems (e.g., RMI or web services).
+Caching: Storing objects in a cache or temporary storage.
+Deep cloning: Creating deep copies of objects.
+How it works:
+
+For an object to be serialized, it must implement the Serializable interface, which is a marker interface (it has no methods to implement).
+Java provides the ObjectOutputStream class to serialize an object into a stream of bytes.
+The reverse process, deserialization, is done using ObjectInputStream.
+
+## Multithreading
+
+#### Multithreading Basics
+Multithreading in Java is the capability of executing multiple threads simultaneously within a single program. A thread is a lightweight subprocess, the smallest unit of processing. Multithreading allows a program to perform multiple tasks concurrently, making efficient use of the CPU by utilizing idle time and improving the overall performance of the application.
+
+Key Concepts:
+
+Thread: The smallest unit of execution within a process.
+Process: A running instance of a program.
+Concurrency vs. Parallelism:
+Concurrency refers to the ability of the system to handle multiple tasks by managing the time each task is given.
+Parallelism involves performing multiple tasks simultaneously, which requires multiple CPU cores.
+Why Use Multithreading:
+
+Responsiveness: Keep the application responsive by performing time-consuming tasks in the background.
+Resource Utilization: Efficiently utilize CPU resources by executing tasks concurrently.
+Improved Performance: Reduce execution time for compute-intensive tasks on multi-core systems.
+
+
+#### Blocked State of a Thread
+
+n Java, a thread enters the Blocked state when it is waiting to acquire a monitor lock to enter a synchronized block or method. This happens when another thread is already holding the lock, and the current thread cannot proceed until the lock becomes available.
+
+Thread Lifecycle Overview:
+
+A thread in Java can be in one of several states:
+
+NEW: Thread is created but not yet started.
+RUNNABLE: Thread is executing in the JVM.
+BLOCKED: Thread is waiting for a monitor lock to enter a synchronized block/method.
+WAITING: Thread is waiting indefinitely for another thread to perform a specific action (wait(), join(), LockSupport.park()).
+TIMED_WAITING: Thread is waiting for a specified period (sleep(), wait(timeout), join(timeout)).
+TERMINATED: Thread has completed execution.
+When Does a Thread Become Blocked?
+
+Attempting to Enter a Synchronized Block/Method:
+
+If a thread tries to execute a synchronized block or method and the required monitor lock is held by another thread, it enters the Blocked state until the lock is released.
+
+#### Dead Lock 
+
+What is a deadlock, and how can you prevent it in Java?
+
+Answer: A deadlock is a situation where two or more threads are blocked forever, each waiting for the other to release a resource. To prevent deadlocks, we can use consistent lock ordering, avoid nested locks, use lock timeouts, and utilize higher-level concurrency utilities.
+
+Explain the difference between Blocked and Waiting thread states.
+
+Answer: In the Blocked state, a thread is waiting to acquire a monitor lock to enter a synchronized block/method. In the Waiting state, a thread is waiting indefinitely for another thread to perform a specific action, such as notifying or joining.
+
+How does synchronized keyword work in Java?
+
+Answer: The synchronized keyword in Java is used to control access to a block of code or method by multiple threads. It ensures that only one thread at a time can execute the synchronized code for a given object, by acquiring the object's monitor lock.
+
+What is the role of the monitor lock or intrinsic lock in Java concurrency?
+
+Answer: The monitor lock is associated with every Java object. It is used by the synchronized keyword to ensure that only one thread at a time can execute a synchronized block or method for that object, providing mutual exclusion.
+Best Practices to Discuss:
+
+Minimize Lock Scope: Keep the amount of code within synchronized blocks as small as possible to reduce contention.
+Use Immutable Objects: Design classes to be immutable to avoid the need for synchronization.
+Prefer Concurrency Utilities: Use classes from java.util.concurrent package, which offer thread-safe operations and reduce the need for manual synchronization.
+Avoid Blocking Calls: Be cautious with methods that can block indefinitely (e.g., waiting for I/O), especially within synchronized blocks.
+
+
+
 
 ## Git
 
@@ -567,8 +695,10 @@ ACID is an collection of rules that guarantees good work of transaction
 
 ### Tree
 #### Red-Black tree
-#### Binary tree
+Binary search trees are a fundamental data structure, but their performance can suffer if the tree becomes unbalanced. Red Black Trees are a type of balanced binary search tree that use a set of rules to maintain balance, ensuring logarithmic time complexity for operations like insertion, deletion, and searching, regardless of the initial shape of the tree. Red Black Trees are self-balancing, using a simple color-coding scheme to adjust the tree after each modification.
 
+
+#### Binary tree
 
 ### Array 
 
